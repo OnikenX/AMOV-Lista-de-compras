@@ -1,0 +1,126 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".UI.MainActivity"
+android:background="#ffffe0"
+android:orientation="vertical">
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginLeft="32dp"
+    android:layout_marginRight="32dp">
+    <Button
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="20dp"
+        android:text="Adicione uma Foto \n+"
+        android:textSize="30sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome:"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/nomeprod"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:paddingTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Marca:"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/marcaprod"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Campo opcional"
+        android:textSize="20sp"
+        android:maxLines="1"/>
+
+    <TextView
+        android:paddingTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Preço:"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/precoprod"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Campo opcional"
+        android:textSize="20sp"
+        android:maxLines="1"
+        android:ems="10"
+        android:inputType="numberDecimal"/>
+
+    <TextView
+        android:paddingTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Validade:"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/validprod"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="date" />
+
+    <TextView
+        android:paddingTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nº de items:"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/editTextNumberDecimal2"
+        android:layout_width="67dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:paddingTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Notas:"
+        android:textSize="24sp" />
+
+
+    <EditText
+        android:id="@+id/notasprod"
+        android:layout_width="275dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:hint="Campo opcional"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/adicionaprod"
+        android:layout_width="136dp"
+        android:layout_height="48dp"
+        android:text="Adicionar" />
+
+</LinearLayout>
+</ScrollView>
