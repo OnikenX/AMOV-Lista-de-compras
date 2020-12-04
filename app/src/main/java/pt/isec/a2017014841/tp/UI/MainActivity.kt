@@ -7,11 +7,13 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.EditText
 import android.widget.ListView
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 import pt.isec.a2017014841.tp.R
 import pt.isec.a2017014841.tp.UI.produtos.ProdViewModel
@@ -20,15 +22,18 @@ import pt.isec.a2017014841.tp.data.repositorios.ProdRepositorio
 import java.lang.NullPointerException
 
 class MainActivity : AppCompatActivity() {
-
+    private var database = DB(this)
+    private var repositorio = ProdRepositorio(database)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         this.setTitle("ListMaker")
-
-        val database = DB(this)
-        val repositorio = ProdRepositorio(database)
+        val rvlista = findViewById<View>(R.id.rvListas) as RecyclerView
+       // contacts = Contact.createContactsList(20)
+        // val adapter = ContactsAdapter(contacts)
+        //rvlista.adapter = adapter
+        rvlista.layoutManager = LinearLayoutManager(this)
         //val factory
         //val viewModel = ViewModelProvider(this, factory).get(ProdViewModel())
 
