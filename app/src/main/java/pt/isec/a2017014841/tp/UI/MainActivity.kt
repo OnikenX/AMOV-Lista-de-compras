@@ -29,8 +29,8 @@ class MainActivity : AppCompatActivity() {
 
         val database = DB(this)
         val repositorio = ProdRepositorio(database)
-        val factory
-        val viewModel = ViewModelProvider(this, factory).get(ProdViewModel())
+        //val factory
+        //val viewModel = ViewModelProvider(this, factory).get(ProdViewModel())
 
         rvListas.layoutManager=LinearLayoutManager(this)
 

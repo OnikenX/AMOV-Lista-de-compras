@@ -4,9 +4,7 @@ import android.view.KeyEvent
 import androidx.lifecycle.ViewModel
 import pt.isec.a2017014841.tp.data.db.entidades.Produto
 import pt.isec.a2017014841.tp.data.repositorios.ProdRepositorio
-import kotlin.coroutines.CoroutineScope
-import kotlin.coroutines.Dispatchers
-import kotlin.coroutines.launch
+import kotlinx.coroutines.*
 
 class ProdViewModel(
     private val repositorio: ProdRepositorio
