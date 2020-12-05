@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 import pt.isec.a2017014841.tp.R
+import pt.isec.a2017014841.tp.data.classes.Item
 import pt.isec.a2017014841.tp.data.classes.Lista_items
 import pt.isec.a2017014841.tp.data.db.DB
 import pt.isec.a2017014841.tp.data.repositorios.ProdRepositorio
@@ -25,8 +26,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var database = DB(this)
-        var repositorio = ProdRepositorio(database)
         this.setTitle("ListMaker")
         val rvlista = findViewById<View>(R.id.rvListas) as RecyclerView
         //val factory
@@ -57,7 +56,8 @@ class MainActivity : AppCompatActivity() {
                 setPositiveButton("OK") { dialogInterface: DialogInterface, i: Int ->
                    if(editText.text.toString()!="")
                    {
-                       listas.add(Lista_items(editText.text.toString()))
+                       var mylist: ArrayList<Item> = ArrayList()
+                       listas.add(Lista_items(editText.text.toString(), mylist))
                    }
                 }
                 setNegativeButton("Cancelar"){ dialog, which->
