@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Listavel</string>
+    <string name="item">Item</string>
+    <string name="enter_some_text">Meta algum texto</string>
+    <string name="ver_lista">Ver lista</string>
+    <string name="nome">Nome:</string>
+    <string name="adicione_uma_foto_n">Adicione uma Foto</string>
+    <string name="marca">Marca:</string>
+    <string name="campo_opcional">Campo opcional</string>
+    <string name="preco">Preço:</string>
+    <string name="validade">Validade:</string>
+    <string name="n_de_items">Nº de items:</string>
+    <string name="notas">Notas:</string>
+    <string name="adicionar">Adicionar</string>
+    <string name="delete_list">Apagar lista</string>
+    <string name="copy_list">Copiar lista</string>
+    <string name="add_items">Adicionar lista</string>
+    <string name="pre_o">Preço:</string>
+    <string name="cancel">Cancelar</string>
+    <string name="choose_from_gallery">Escolher da galeria</string>
+    <string name="take_photo">Tirar fotografia</string>
+    <string name="how_to_photo">Como quer escolher a foto?</string>
+</resources>

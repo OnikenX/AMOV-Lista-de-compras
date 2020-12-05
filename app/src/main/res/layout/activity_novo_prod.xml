@@ -14,18 +14,19 @@ android:orientation="vertical">
     android:layout_marginLeft="32dp"
     android:layout_marginRight="32dp">
     <Button
+        android:id="@+id/add_photo"
         android:layout_width="350dp"
         android:layout_height="200dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="20dp"
-        android:text="Adicione uma Foto \n+"
+        android:text="@string/adicione_uma_foto_n"
         android:textSize="30sp"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nome:"
+        android:text="@string/nome"
         android:textSize="24sp" />
 
     <EditText
@@ -39,14 +40,14 @@ android:orientation="vertical">
         android:paddingTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Marca:"
+        android:text="@string/marca"
         android:textSize="24sp" />
 
     <EditText
         android:id="@+id/marcaprod"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Campo opcional"
+        android:hint="@string/campo_opcional"
         android:textSize="20sp"
         android:maxLines="1"/>
 
@@ -54,14 +55,14 @@ android:orientation="vertical">
         android:paddingTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Preço:"
+        android:text="@string/preco"
         android:textSize="24sp" />
 
     <EditText
         android:id="@+id/precoprod"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Campo opcional"
+        android:hint="@string/campo_opcional"
         android:textSize="20sp"
         android:maxLines="1"
         android:ems="10"
@@ -71,7 +72,7 @@ android:orientation="vertical">
         android:paddingTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Validade:"
+        android:text="@string/validade"
         android:textSize="24sp" />
 
     <EditText
@@ -85,7 +86,7 @@ android:orientation="vertical">
         android:paddingTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nº de items:"
+        android:text="@string/n_de_items"
         android:textSize="24sp" />
 
     <EditText
@@ -104,7 +105,7 @@ android:orientation="vertical">
         android:paddingTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Notas:"
+        android:text="@string/notas"
         android:textSize="24sp" />
 
 
@@ -113,14 +114,14 @@ android:orientation="vertical">
         android:layout_width="275dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:hint="Campo opcional"
+        android:hint="@string/campo_opcional"
         android:textSize="20sp" />
 
     <Button
         android:id="@+id/adicionaprod"
         android:layout_width="136dp"
         android:layout_height="48dp"
-        android:text="Adicionar" />
+        android:text="@string/adicionar" />
 
 </LinearLayout>
 </ScrollView>
