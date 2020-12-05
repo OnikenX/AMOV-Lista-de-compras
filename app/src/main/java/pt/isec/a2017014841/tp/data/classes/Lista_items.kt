@@ -6,4 +6,8 @@ class Lista_items (private var nome: String, private var lista :ArrayList<Item>)
 {
     return nome;
 }
+    fun get_items():ArrayList<Item>
+    {
+        return lista
+    }
 }
