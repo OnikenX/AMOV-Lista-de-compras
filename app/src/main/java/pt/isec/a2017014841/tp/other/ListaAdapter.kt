@@ -17,7 +17,9 @@ class ListaAdapter(private val listas: ArrayList<String>): RecyclerView.Adapter<
     inner class ListaViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
     {
         val nameTextView = itemView.findViewById<TextView>(R.id.nome_lista)//texto da lista
-        val messageButton = itemView.findViewById<Button>(R.id.message_button)
+        val deleteButton = itemView.findViewById<Button>(R.id.delete_button)
+        val addButton = itemView.findViewById<Button>(R.id.add_items)
+        val copyButton=  itemView.findViewById<Button>(R.id.copy_button)
     }//representa cada um dos itens que vai ser visualizado dentro da RV
 
 
@@ -43,7 +45,8 @@ class ListaAdapter(private val listas: ArrayList<String>): RecyclerView.Adapter<
         // Set item views based on your views and data model
         val textView = viewHolder.nameTextView
         textView.text = "dildo"
-        val button = viewHolder.messageButton
+        val deletebutton = viewHolder.deleteButton
+        val addbutton =viewHolder.addButton
        // button.isEnabled = false
        // button.text = "dildo_baggins"
         //button.isEnabled = contact.isOnline
