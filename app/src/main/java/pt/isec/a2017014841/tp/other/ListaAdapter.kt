@@ -10,10 +10,11 @@ import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.show_listas.view.*
 import pt.isec.a2017014841.tp.R
+import pt.isec.a2017014841.tp.data.classes.Lista_items
 import pt.isec.a2017014841.tp.data.db.entidades.Lista
 
 
-class ListaAdapter(private val listas: ArrayList<String>): RecyclerView.Adapter<ListaAdapter.ListaViewHolder>() {
+class ListaAdapter(private val listas: ArrayList<Lista_items>): RecyclerView.Adapter<ListaAdapter.ListaViewHolder>() {
     inner class ListaViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
     {
         val nameTextView = itemView.findViewById<TextView>(R.id.nome_lista)//texto da lista
@@ -40,13 +41,24 @@ class ListaAdapter(private val listas: ArrayList<String>): RecyclerView.Adapter<
 
     override fun onBindViewHolder(@NonNull viewHolder: ListaAdapter.ListaViewHolder, position: Int) {
 
-       val nome= "hello"
+      // val nome= "hello"
         //val contact: Contact = mContacts.get(position)
         // Set item views based on your views and data model
         val textView = viewHolder.nameTextView
-        textView.text = "dildo"
+        textView.text = listas.get(position).get_nome()
         val deletebutton = viewHolder.deleteButton
+        val copybutton=viewHolder.copyButton
         val addbutton =viewHolder.addButton
+        deletebutton.setOnClickListener() {
+            listas.removeAt(position)
+            notifyDataSetChanged();
+        }
+        copybutton.setOnClickListener() {
+            if((listas.get(position).get_nome()+"-Copia").length<16)
+                listas.add(Lista_items(listas.get(position).get_nome()+"-Copia"))
+            notifyDataSetChanged();
+        }
+
        // button.isEnabled = false
        // button.text = "dildo_baggins"
         //button.isEnabled = contact.isOnline
