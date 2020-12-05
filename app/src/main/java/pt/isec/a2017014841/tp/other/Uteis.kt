@@ -1,18 +1,32 @@
 package pt.isec.a2017014841.tp.other
 
+import android.Manifest
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.provider.MediaStore
 import android.view.View
 import android.widget.ImageView
+import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityCompat.startActivityForResult
 import java.io.File
 import kotlin.math.min
 
 
-class Uteis{
+fun hasReadPermission(context : Context) : Boolean{
+    return ActivityCompat.checkSelfPermission(
+            context,
+            android.Manifest.permission.READ_EXTERNAL_STORAGE
+        ) == PackageManager.PERMISSION_GRANTED
+}
+const val REQUEST_READ_PERMISSION = 3;
+fun askForPermission(activity : Activity){
+    ActivityCompat.requestPermissions(activity, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE) , REQUEST_READ_PERMISSION);
+}
 
 
     fun getPhoto(){
@@ -43,4 +57,5 @@ class Uteis{
         }
     }
 
-}
+
+

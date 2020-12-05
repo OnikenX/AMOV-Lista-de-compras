@@ -22,4 +22,5 @@
     <string name="take_photo">Tirar fotografia</string>
     <string name="how_to_photo">Como quer escolher a foto?</string>
     <string name="item_photo">Foto do item</string>
+    <string name="cant_access_gallery">Sem acesso à galleria.</string>
 </resources>
