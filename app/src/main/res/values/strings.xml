@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Listable</string>
+    <string name="nome">Name:</string>
+    <string name="adicione_uma_foto_n">Add a photo</string>
+    <string name="marca">Brand:</string>
+    <string name="campo_opcional">Optional camp</string>
+    <string name="preco">Price:</string>
+    <string name="validade">Expiration date:</string>
+    <string name="n_de_items">N° of items:</string>
+    <string name="notas">Notes:</string>
+    <string name="adicionar">Add</string>
+    <string name="ver_lista">Open list</string>
+    <string name="delete_list">Delete list</string>
+    <string name="copy_list">Copy list</string>
+    <string name="add_items">Add items</string>
+    <string name="enter_some_text">Enter some text</string>
+    <string name="item">Item</string>
+    <string name="cancel">Cancel</string>
+    <string name="choose_from_gallery">Choose from gallery</string>
+    <string name="take_photo">Take photo</string>
+    <string name="how_to_photo">How would you like to choose the photo?</string>
 </resources>
