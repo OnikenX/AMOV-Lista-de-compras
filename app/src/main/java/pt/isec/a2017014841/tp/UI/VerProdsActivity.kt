@@ -39,10 +39,7 @@ class VerProdsActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val intent = Intent(this, NovoProdActivity::class.java)
         this.startActivity(intent)
-        var item : Item
-        val bundle_main = intent.extras
-        val intent = intent
-        val bundle = intent.extras
-        val thumbs: List<Thumbnail>? = bundle!!.getSerializable("value") as List<Thumbnail>?
+        val b = intent.extras
+        b?.getSerializable("item")
     }
 }
