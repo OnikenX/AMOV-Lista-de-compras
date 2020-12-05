@@ -1,27 +1,33 @@
 package pt.isec.a2017014841.tp.data.classes
 
+import android.graphics.Bitmap
 import java.util.*
 
-class Item(private var nome:String, private var marca:String, private var categoria:String, private var validade:Date, private var quantidade :String) {
+
+
+class Item(private var nome:String, private var marca:String, private var categoria:String, private var validade:Date, private var quantidade :String, private var bitmap : Bitmap)  {
     fun get_marca():String
     {
-        return marca;
+        return marca
+    }
+    fun get_bitmap():Bitmap?{
+        return bitmap
     }
     fun get_cat():String
     {
-        return categoria;
+        return categoria
     }
     fun get_val():Date
     {
-        return validade;
+        return validade
     }
     fun get_quant():String
     {
-        return quantidade;
+        return quantidade
     }
     fun get_nome():String
     {
-        return nome;
+        return nome
     }
     fun set_marca(marca:String)
     {

@@ -22,4 +22,5 @@
     <string name="item_photo">Item photo</string>
     <string name="pre_o">Price:</string>
     <string name="cant_access_gallery">Can\'t access gallery.</string>
+    <string name="category">category</string>
 </resources>

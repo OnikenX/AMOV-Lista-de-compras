@@ -3,7 +3,6 @@ package pt.isec.a2017014841.tp.UI
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -15,9 +14,12 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import kotlinx.android.synthetic.main.activity_novo_prod.*
 import pt.isec.a2017014841.tp.R
+import pt.isec.a2017014841.tp.data.classes.Item
+import pt.isec.a2017014841.tp.other.askForPermission
+import pt.isec.a2017014841.tp.other.hasReadPermission
+import java.io.Serializable
 import kotlin.math.min
 
 
@@ -27,21 +29,25 @@ class NovoProdActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_novo_prod)
         if (bitmap == null) {
-            if(savedInstanceState!= null)
+            if (savedInstanceState != null)
                 bitmap = savedInstanceState.getParcelable("photo")
-            else{
+            else {
                 Toast.makeText(this, "estava null lol", Toast.LENGTH_SHORT).show();
                 val conf = Bitmap.Config.ARGB_8888 // see other conf types
                 bitmap = Bitmap.createBitmap(20, 20, conf) // this creates a MUTABLE bitmap
             }
         }
         photo.setImageBitmap(bitmap)
-
-// ready to draw on that bitmap through that canvas
+        // ready to draw on that bitmap through that canvas
         add_photo.setOnClickListener() {
             selectImage(this)
         }
 
+        adicionaprod.setOnClickListener(){
+            val item = Item(nomeprod.toString(), marcaprod.toString(), categoryprod.toString(), validprod, , , n_items.toString(), bitmap!!  )
+            val intent = intent
+            intent.putExtra("new_item",  Serializable.item)
+        }
     }
 
     private fun selectImage(context: Context) {
@@ -57,21 +63,20 @@ class NovoProdActivity : AppCompatActivity() {
                 val takePicture = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                 startActivityForResult(takePicture, 0)
             } else if (options[item] == getString(R.string.choose_from_gallery)) {
-                if (ActivityCompat.checkSelfPermission(
-                        context,
-                        android.Manifest.permission.READ_EXTERNAL_STORAGE
-                    ) == PackageManager.PERMISSION_GRANTED
-                ) {
+                if (hasReadPermission(this)) {
                     val pickPhoto = Intent(
                         Intent.ACTION_PICK,
                         MediaStore.Images.Media.EXTERNAL_CONTENT_URI
                     )
                     startActivityForResult(pickPhoto, 1)
                 } else {
-                    AlertDialog.Builder(this)
-                        .setTitle(getString(R.string.cant_access_gallery))
-                        .setCancelable(true)
-                        .show()
+                    askForPermission(this);
+                    if (hasReadPermission(this)) {
+                        AlertDialog.Builder(this)
+                            .setTitle(getString(R.string.cant_access_gallery))
+                            .setCancelable(true)
+                            .show()
+                    }
 
                 }
             } else if (options[item] == getString(R.string.cancel)) {
@@ -79,6 +84,8 @@ class NovoProdActivity : AppCompatActivity() {
             }
         }
         builder.show()
+
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -40,6 +40,13 @@ class VerProdsActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val intent = Intent(this, NovoProdActivity::class.java)
         this.startActivity(intent)
+        var item : Item
+        val bundle_main = intent.extras
+        if (bundle_main!=null)
+        {
+            lista_items = bundle_main.getSerializable("ARRAYLIST") as ArrayList<Item>
+        }
+        val rvlista = findViewById<View>(R.id.rvItems) as RecyclerView
         return true
     }
 }
