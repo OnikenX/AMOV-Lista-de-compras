@@ -1,16 +1,17 @@
 package pt.isec.a2017014841.tp.other
 
+import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.annotation.NonNull
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import pt.isec.a2017014841.tp.R
-import pt.isec.a2017014841.tp.UI.MainActivity
+import pt.isec.a2017014841.tp.UI.VerProdsActivity
 import pt.isec.a2017014841.tp.data.classes.Item
 import pt.isec.a2017014841.tp.data.classes.Lista_items
 
@@ -18,6 +19,8 @@ import pt.isec.a2017014841.tp.data.classes.Lista_items
 class ListaAdapter(private val listas: ArrayList<Lista_items>): RecyclerView.Adapter<ListaAdapter.ListaViewHolder>() {
     inner class ListaViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
     {
+        var context= itemView.context
+        val n =  itemView.findViewById<TextView>(R.id.rvListas)
         val nameTextView = itemView.findViewById<TextView>(R.id.nome_lista)//texto da lista
         val deleteButton = itemView.findViewById<Button>(R.id.delete_button)
         val addButton = itemView.findViewById<Button>(R.id.add_items)
@@ -40,11 +43,6 @@ class ListaAdapter(private val listas: ArrayList<Lista_items>): RecyclerView.Ada
         return listas.size
     }
 
-    @Override fun onClick(view: View?) {
-        val intent = Intent(view!!.context, MainActivity::class.java)
-        //intent.putExtras(b)
-        //startActivity(intent)
-    }
     override fun onBindViewHolder(@NonNull viewHolder: ListaAdapter.ListaViewHolder, position: Int) {
 
       // val nome= "hello"
@@ -55,6 +53,15 @@ class ListaAdapter(private val listas: ArrayList<Lista_items>): RecyclerView.Ada
         val deletebutton = viewHolder.deleteButton
         val copybutton=viewHolder.copyButton
         val addbutton =viewHolder.addButton
+        textView.setOnClickListener()
+        {
+
+            val intent = Intent(viewHolder.context.applicationContext, VerProdsActivity::class.java)
+             val b = Bundle()
+             b.putSerializable("ARRAYLIST", listas.get(position).get_items())
+             intent.putExtras(b)
+            viewHolder.context.startActivity(intent)
+        }
         deletebutton.setOnClickListener() {
             listas.removeAt(position)
             notifyDataSetChanged();
