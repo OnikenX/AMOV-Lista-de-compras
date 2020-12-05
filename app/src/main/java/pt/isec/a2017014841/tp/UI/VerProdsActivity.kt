@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import pt.isec.a2017014841.tp.R
 import pt.isec.a2017014841.tp.data.classes.Item
-import pt.isec.a2017014841.tp.other.ItemAdapter
 
 class VerProdsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,11 +41,8 @@ class VerProdsActivity : AppCompatActivity() {
         this.startActivity(intent)
         var item : Item
         val bundle_main = intent.extras
-        if (bundle_main!=null)
-        {
-            lista_items = bundle_main.getSerializable("ARRAYLIST") as ArrayList<Item>
-        }
-        val rvlista = findViewById<View>(R.id.rvItems) as RecyclerView
-        return true
+        val intent = intent
+        val bundle = intent.extras
+        val thumbs: List<Thumbnail>? = bundle!!.getSerializable("value") as List<Thumbnail>?
     }
 }

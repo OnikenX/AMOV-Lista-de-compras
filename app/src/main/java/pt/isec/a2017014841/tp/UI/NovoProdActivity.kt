@@ -19,7 +19,6 @@ import pt.isec.a2017014841.tp.R
 import pt.isec.a2017014841.tp.data.classes.Item
 import pt.isec.a2017014841.tp.other.askForPermission
 import pt.isec.a2017014841.tp.other.hasReadPermission
-import java.io.Serializable
 import kotlin.math.min
 
 
@@ -43,10 +42,17 @@ class NovoProdActivity : AppCompatActivity() {
             selectImage(this)
         }
 
-        adicionaprod.setOnClickListener(){
-            val item = Item(nomeprod.toString(), marcaprod.toString(), categoryprod.toString(), validprod, , , n_items.toString(), bitmap!!  )
-            val intent = intent
-            intent.putExtra("new_item",  Serializable.item)
+        adicionaprod.setOnClickListener() {
+            val item = Item(
+                nomeprod.toString(),
+                marcaprod.toString(),
+                categoryprod.toString(), validprod.toString(), n_items.toString(), bitmap!!
+            )
+            val intent = Intent(applicationContext, VerProdsActivity::class.java)
+            val bundle = Bundle()
+            bundle.putSerializable("item", item)
+            intent.putExtras(bundle)
+            finish()
         }
     }
 
@@ -147,5 +153,4 @@ class NovoProdActivity : AppCompatActivity() {
         //salvar a imagem
         outState.putParcelable("photo", bitmap)
     }
-
 }

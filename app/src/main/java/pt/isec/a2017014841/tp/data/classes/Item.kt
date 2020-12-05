@@ -1,11 +1,12 @@
 package pt.isec.a2017014841.tp.data.classes
 
 import android.graphics.Bitmap
+import java.io.Serializable
 import java.util.*
 
 
 
-class Item(private var nome:String, private var marca:String, private var categoria:String, private var validade:Date, private var quantidade :String, private var bitmap : Bitmap)  {
+class Item(private var nome:String, private var marca:String, private var categoria:String, private var validade:String, private var quantidade: String, private var bitmap: Bitmap) : Serializable {
     fun get_marca():String
     {
         return marca
@@ -17,7 +18,7 @@ class Item(private var nome:String, private var marca:String, private var catego
     {
         return categoria
     }
-    fun get_val():Date
+    fun get_val():String
     {
         return validade
     }
@@ -37,7 +38,7 @@ class Item(private var nome:String, private var marca:String, private var catego
     {
         this.quantidade=quantidade
     }
-    fun set_validade(vali:Date)
+    fun set_validade(vali:String)
     {
         this.validade=vali
     }
@@ -49,4 +50,9 @@ class Item(private var nome:String, private var marca:String, private var catego
     {
         this.categoria=cat
     }
+
+    override fun toString(): String {
+        return "Item(nome='$nome', marca='$marca', categoria='$categoria', validade='$validade', quantidade='$quantidade', bitmap=$bitmap)"
+    }
+
 }
