@@ -1,127 +1,137 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".UI.MainActivity"
-android:background="#ffffe0"
-android:orientation="vertical">
-
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffe0"
     android:orientation="vertical"
-    android:layout_marginLeft="32dp"
-    android:layout_marginRight="32dp">
-    <Button
-        android:id="@+id/add_photo"
-        android:layout_width="350dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="20dp"
-        android:text="@string/adicione_uma_foto_n"
-        android:textSize="30sp"
-        />
+    tools:context=".UI.MainActivity">
 
-    <TextView
+
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/nome"
-        android:textSize="24sp" />
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/nomeprod"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:textSize="20sp"/>
+        <ImageView
+            android:id="@+id/add_photo"
+            android:layout_width="350dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="20dp"
+            android:contentDescription="@string/item_photo" />
 
-    <TextView
-        android:paddingTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/marca"
-        android:textSize="24sp" />
+        <!--        <Button-->
+        <!--            android:id="@+id/add_photo"-->
+        <!--            android:layout_width="350dp"-->
+        <!--            android:layout_height="200dp"-->
+        <!--            android:layout_marginTop="32dp"-->
+        <!--            android:layout_marginBottom="20dp"-->
+        <!--            android:text="@string/adicione_uma_foto_n"-->
+        <!--            android:textSize="30sp" />-->
 
-    <EditText
-        android:id="@+id/marcaprod"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/campo_opcional"
-        android:textSize="20sp"
-        android:maxLines="1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nome"
+            android:textSize="24sp" />
 
-    <TextView
-        android:paddingTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/preco"
-        android:textSize="24sp" />
+        <EditText
+            android:id="@+id/nomeprod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/precoprod"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/campo_opcional"
-        android:textSize="20sp"
-        android:maxLines="1"
-        android:ems="10"
-        android:inputType="numberDecimal"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:text="@string/marca"
+            android:textSize="24sp" />
 
-    <TextView
-        android:paddingTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/validade"
-        android:textSize="24sp" />
+        <EditText
+            android:id="@+id/marcaprod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/campo_opcional"
+            android:maxLines="1"
+            android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/validprod"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="date" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:text="@string/preco"
+            android:textSize="24sp" />
 
-    <TextView
-        android:paddingTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/n_de_items"
-        android:textSize="24sp" />
+        <EditText
+            android:id="@+id/precoprod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/campo_opcional"
+            android:inputType="numberDecimal"
+            android:maxLines="1"
+            android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/editTextNumberDecimal2"
-        android:layout_width="67dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        app:layout_constraintEnd_toStartOf="@+id/button"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:text="@string/validade"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/validprod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="date" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:text="@string/n_de_items"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/editTextNumberDecimal2"
+            android:layout_width="67dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            app:layout_constraintEnd_toStartOf="@+id/button"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-    <TextView
-        android:paddingTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/notas"
-        android:textSize="24sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:text="@string/notas"
+            android:textSize="24sp" />
 
 
-    <EditText
-        android:id="@+id/notasprod"
-        android:layout_width="275dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:hint="@string/campo_opcional"
-        android:textSize="20sp" />
+        <EditText
+            android:id="@+id/notasprod"
+            android:layout_width="275dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="@string/campo_opcional"
+            android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/adicionaprod"
-        android:layout_width="136dp"
-        android:layout_height="48dp"
-        android:text="@string/adicionar" />
+        <Button
+            android:id="@+id/adicionaprod"
+            android:layout_width="136dp"
+            android:layout_height="48dp"
+            android:text="@string/adicionar" />
 
-</LinearLayout>
+    </LinearLayout>
 </ScrollView>
