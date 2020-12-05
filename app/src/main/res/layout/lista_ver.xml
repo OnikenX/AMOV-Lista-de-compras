@@ -16,8 +16,26 @@
         />
 
     <Button
-        android:id="@+id/message_button"
-        android:text="hello"
+        android:id="@+id/delete_button"
+        android:text="delete list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:textSize="10sp"
+        />
+    <Button
+        android:id="@+id/copy_button"
+        android:text="Copy list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:textSize="10sp"
+        />
+    <Button
+        android:id="@+id/add_items"
+        android:text="Add items"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="16dp"
