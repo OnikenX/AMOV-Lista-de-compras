@@ -51,6 +51,7 @@ class NovoProdActivity : AppCompatActivity() {
             val intent = Intent(applicationContext, VerProdsActivity::class.java)
             val bundle = Bundle()
             bundle.putSerializable("item", item)
+            bundle.getSerializable
             intent.putExtras(bundle)
             finish()
         }

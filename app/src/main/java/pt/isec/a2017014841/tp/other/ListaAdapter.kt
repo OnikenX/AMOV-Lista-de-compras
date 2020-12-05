@@ -56,10 +56,18 @@ class ListaAdapter(private val listas: ArrayList<Lista_items>): RecyclerView.Ada
         textView.setOnClickListener()
         {
 
+            li          stas.get(0).get_items().add(Item("VASCO","OIOIOI","KSKSK",null,"aaaa"))
+            val mPrefs: SharedPreferences = viewHolder.context.getSharedPreferences("Lista_items",MODE_PRIVATE)
+            val prefsEditor: Editor = mPrefs.edit()
+            val gson = Gson()
+            val json = gson.toJson(listas)
+            prefsEditor.putString("Listas_items", json)
+            prefsEditor.apply()
+
             val intent = Intent(viewHolder.context.applicationContext, VerProdsActivity::class.java)
-             val b = Bundle()
-             b.putSerializable("ARRAYLIST", listas.get(position).get_items())
-             intent.putExtras(b)
+            val b = Bundle()
+            b.putSerializable("ARRAYLIST", listas.get(position).get_items())
+            intent.putExtras(b)
             viewHolder.context.startActivity(intent)
         }
         deletebutton.setOnClickListener() {

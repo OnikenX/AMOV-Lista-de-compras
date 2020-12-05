@@ -23,19 +23,19 @@ import pt.isec.a2017014841.tp.other.ListaAdapter
 
 class MainActivity : AppCompatActivity() {
   private  var listas = ArrayList<Lista_items>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val b = Bundle()
+        intent.extras?
         this.setTitle("ListMaker")
-        val rvlista = findViewById<View>(R.id.rvListas) as RecyclerView
         //val factory
         //val viewModel = ViewModelProvider(this, factory).get(ProdViewModel())
         val adapter = ListaAdapter(listas)
-        rvlista.adapter = adapter
-        rvlista.layoutManager = LinearLayoutManager(this)
+        rvListas.adapter = adapter
+        rvListas.layoutManager = LinearLayoutManager(this)
        // contacts = Contact.createContactsList(20)
-
-
     }
 
 
@@ -69,7 +69,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
         if (item.itemId == R.id.menu1VP) {
-            val intent = Intent(this, VerProdsActivity::class.java)
+            val intentToGo = Intent(this, VerProdsActivity::class.java)
+            intentToGo.extras?.get()
+
             this.startActivity(intent)
             return true
         }
