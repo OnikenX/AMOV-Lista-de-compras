@@ -1,17 +1,18 @@
 package pt.isec.a2017014841.tp.other
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.inflate
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.annotation.NonNull
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.show_listas.view.*
 import pt.isec.a2017014841.tp.R
+import pt.isec.a2017014841.tp.UI.MainActivity
+import pt.isec.a2017014841.tp.data.classes.Item
 import pt.isec.a2017014841.tp.data.classes.Lista_items
-import pt.isec.a2017014841.tp.data.db.entidades.Lista
 
 
 class ListaAdapter(private val listas: ArrayList<Lista_items>): RecyclerView.Adapter<ListaAdapter.ListaViewHolder>() {
@@ -39,6 +40,11 @@ class ListaAdapter(private val listas: ArrayList<Lista_items>): RecyclerView.Ada
         return listas.size
     }
 
+    @Override fun onClick(view: View?) {
+        val intent = Intent(view!!.context, MainActivity::class.java)
+        //intent.putExtras(b)
+        //startActivity(intent)
+    }
     override fun onBindViewHolder(@NonNull viewHolder: ListaAdapter.ListaViewHolder, position: Int) {
 
       // val nome= "hello"
@@ -55,7 +61,11 @@ class ListaAdapter(private val listas: ArrayList<Lista_items>): RecyclerView.Ada
         }
         copybutton.setOnClickListener() {
             if((listas.get(position).get_nome()+"-Copia").length<16)
-                listas.add(Lista_items(listas.get(position).get_nome()+"-Copia"))
+            {
+                var mylist: ArrayList<Item> = ArrayList()
+                listas.add(Lista_items(listas.get(position).get_nome() + "-Copia", mylist))
+            }
+
             notifyDataSetChanged();
         }
 
