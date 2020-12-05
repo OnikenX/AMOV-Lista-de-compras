@@ -15,38 +15,31 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 import pt.isec.a2017014841.tp.R
+import pt.isec.a2017014841.tp.data.classes.Lista_items
 import pt.isec.a2017014841.tp.data.db.DB
 import pt.isec.a2017014841.tp.data.repositorios.ProdRepositorio
 import pt.isec.a2017014841.tp.other.ListaAdapter
 
 class MainActivity : AppCompatActivity() {
-
+  private  var listas = ArrayList<Lista_items>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         var database = DB(this)
         var repositorio = ProdRepositorio(database)
         this.setTitle("ListMaker")
-
+        val rvlista = findViewById<View>(R.id.rvListas) as RecyclerView
+        //val factory
+        //val viewModel = ViewModelProvider(this, factory).get(ProdViewModel())
+        val adapter = ListaAdapter(listas)
+        rvlista.adapter = adapter
+        rvlista.layoutManager = LinearLayoutManager(this)
        // contacts = Contact.createContactsList(20)
 
 
     }
 
-    override fun onResume() {
-        super.onResume()
-        val cars = ArrayList<String>()
-        cars.add("um")
-        cars.add("dois")
-        cars.add("tres")
-        cars.add("quatro")
-        val rvlista = findViewById<View>(R.id.rvListas) as RecyclerView
-        //val factory
-        //val viewModel = ViewModelProvider(this, factory).get(ProdViewModel())
-        val adapter = ListaAdapter(cars)
-        rvlista.adapter = adapter
-        rvlista.layoutManager = LinearLayoutManager(this)
-    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu1, menu)
         return true
@@ -62,15 +55,10 @@ class MainActivity : AppCompatActivity() {
             with(builder) {
                 setTitle("Indique o nome da lista")
                 setPositiveButton("OK") { dialogInterface: DialogInterface, i: Int ->
-                    val intent = Intent(
-                        this.context,
-                        VerListaActivity::class.java
-                    ).also{
-                        val nome = editText.text.toString()
-                        it.putExtra("NOME_LISTA", nome)
-                        startActivity(it)
-                    }
-
+                   if(editText.text.toString()!="")
+                   {
+                       listas.add(Lista_items(editText.text.toString()))
+                   }
                 }
                 setNegativeButton("Cancelar"){ dialog, which->
                     Log.d("Main", "Negative button clicked")
