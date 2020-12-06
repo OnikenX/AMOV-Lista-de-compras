@@ -38,8 +38,8 @@ class ItemAdapter(private val listas: ArrayList<Item>): RecyclerView.Adapter<Ite
     override fun onBindViewHolder(@NonNull viewHolder: ItemAdapter.ItemViewHolder, position: Int) {
         viewHolder.name.text=listas.get(position).get_nome()
         viewHolder.marca.text=listas.get(position).get_marca()
-        viewHolder.preco.text=listas.get(position).get_preco()
-        viewHolder.quantidade.text=listas.get(position).get_quant()
+       // viewHolder.preco.text=listas.get(position).get_preco()
+       // viewHolder.quantidade.text=listas.get(position).get_quant()
 
     }
 }
