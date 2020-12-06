@@ -30,7 +30,7 @@ class NovoProdActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_novo_prod)
-        if (intent.extras != null) {
+        if (intent.getBundleExtra("ARRAYLIST") != null) {
             lista_items = intent.extras!!.getSerializable("ARRAYLIST") as Lista_items
             // lista_items.add(intent.extras!!.getSerializable("item") as Item)
         }

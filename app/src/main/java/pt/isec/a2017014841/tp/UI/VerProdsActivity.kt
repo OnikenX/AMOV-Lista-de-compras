@@ -24,10 +24,10 @@ class VerProdsActivity : AppCompatActivity() {
         this.setTitle("Produtos")
         if(savedInstanceState == null){
             if (intent.extras != null) {
-                lista_items = intent.extras!!.getSerializable("ARRAYLIST") as Lista_items
+                lista_items = intent.getSerializableExtra("ARRAYLIST") as Lista_items
             }
         }else{
-            lista_items = intent.extras!!.getSerializable("ARRAYLIST") as Lista_items
+            lista_items = intent.getSerializableExtra("ARRAYLIST") as Lista_items
         }
         val rvlista = findViewById<View>(R.id.rvItems) as RecyclerView
         val adapter = ItemAdapter(lista_items.get_items())
