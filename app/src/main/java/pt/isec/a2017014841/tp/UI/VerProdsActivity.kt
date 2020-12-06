@@ -6,17 +6,17 @@ import android.os.PersistableBundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import com.google.gson.Gson
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import pt.isec.a2017014841.tp.R
 import pt.isec.a2017014841.tp.data.classes.Item
+import pt.isec.a2017014841.tp.data.classes.Lista_items
 import pt.isec.a2017014841.tp.other.ItemAdapter
 
 class VerProdsActivity : AppCompatActivity() {
-    var lista_items = ArrayList<Item>()
+    lateinit var lista_items :Lista_items
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.i("DEBUG", "MyClass.getView() — get item number")
@@ -24,13 +24,13 @@ class VerProdsActivity : AppCompatActivity() {
         this.setTitle("Produtos")
         if(savedInstanceState == null){
             if (intent.extras != null) {
-                lista_items = intent.extras!!.getSerializable("ARRAYLIST") as ArrayList<Item>
+                lista_items = intent.extras!!.getSerializable("ARRAYLIST") as Lista_items
             }
         }else{
-            lista_items = savedInstanceState.getSerializable("lista_items") as ArrayList<Item>
+            lista_items = intent.extras!!.getSerializable("ARRAYLIST") as Lista_items
         }
         val rvlista = findViewById<View>(R.id.rvItems) as RecyclerView
-        val adapter = ItemAdapter(lista_items)
+        val adapter = ItemAdapter(lista_items.get_items())
         rvlista.adapter = adapter
 
         //var lista: ArrayList<Item> = ArrayList()
@@ -40,7 +40,6 @@ class VerProdsActivity : AppCompatActivity() {
         if (gson.fromJson(json, lista::class.java) != null) {
             lista = gson.fromJson(json, lista::class.java)
         }*/
-
 
 
         rvlista.layoutManager = LinearLayoutManager(this)
@@ -58,9 +57,10 @@ class VerProdsActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val intentToGO = Intent(this, NovoProdActivity::class.java)
+        val b = Bundle()
+        b.putSerializable("ARRAYLIST", lista_items)
+        intent.putExtras(b)
         this.startActivity(intentToGO)
-        val item : Item = intentToGO.extras?.getSerializable("item") as Item//crash
-        lista_items.add(item)
         return true
     }
 }

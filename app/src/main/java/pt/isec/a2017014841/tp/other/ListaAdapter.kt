@@ -69,7 +69,7 @@ class ListaAdapter(private val listas: ArrayList<Lista_items>): RecyclerView.Ada
 
             val intent = Intent(viewHolder.context.applicationContext, VerProdsActivity::class.java)
             val b = Bundle()
-            b.putSerializable("ARRAYLIST", listas.get(position).get_items())
+            b.putSerializable("ARRAYLIST", listas.get(position))
             intent.putExtras(b)
             viewHolder.context.startActivity(intent)
         }

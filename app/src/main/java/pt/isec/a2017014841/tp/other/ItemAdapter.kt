@@ -1,7 +1,6 @@
 package pt.isec.a2017014841.tp.other
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.inflate
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
@@ -10,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.show_listas.view.*
 import pt.isec.a2017014841.tp.R
 import pt.isec.a2017014841.tp.data.classes.Item
-
+import pt.isec.a2017014841.tp.data.classes.Lista_items
 
 
 class ItemAdapter(private val listas: ArrayList<Item>): RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {

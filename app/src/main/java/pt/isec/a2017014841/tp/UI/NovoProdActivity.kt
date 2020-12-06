@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_novo_prod.*
 import pt.isec.a2017014841.tp.R
 import pt.isec.a2017014841.tp.data.classes.Item
+import pt.isec.a2017014841.tp.data.classes.Lista_items
 import pt.isec.a2017014841.tp.other.askForPermission
 import pt.isec.a2017014841.tp.other.hasReadPermission
 import pt.isec.a2017014841.tp.other.setPic
@@ -25,9 +26,19 @@ import kotlin.math.min
 
 class NovoProdActivity : AppCompatActivity() {
     var bitmap: Bitmap? = null
+    lateinit var lista_items : Lista_items
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_novo_prod)
+        if (intent.extras != null) {
+            lista_items = intent.extras!!.getSerializable("ARRAYLIST") as Lista_items
+            // lista_items.add(intent.extras!!.getSerializable("item") as Item)
+        }
+        else
+        {
+            var o : ArrayList<Item> = arrayListOf()
+            lista_items= Lista_items("nome_lista", o)
+        }
         if (bitmap == null) {
             if (savedInstanceState != null)
                 bitmap = savedInstanceState.getParcelable("photo")
@@ -48,11 +59,13 @@ class NovoProdActivity : AppCompatActivity() {
                 marcaprod.toString(),
                 categoryprod.toString(), validprod.toString(), n_items.toString(), precoprod.toString(), notasprod.toString(),  bitmap!!
             )
-            val intent = Intent(applicationContext, VerProdsActivity::class.java)
+            val intent = Intent(this@NovoProdActivity, VerProdsActivity::class.java)
             val bundle = Bundle()
-            bundle.putSerializable("item", item)
+            lista_items.get_items().add(item)
+            bundle.putSerializable("ARRAYLIST", lista_items)
             intent.putExtras(bundle)
-            finish()
+            startActivity(intent)
+
         }
     }
 
