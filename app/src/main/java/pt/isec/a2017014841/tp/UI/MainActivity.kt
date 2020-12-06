@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val edit = getSharedPreferences("list", 0).edit()
-
         this.title = getString(R.string.ListMaker)
         //val factory
         //val viewModel = ViewModelProvider(this, factory).get(ProdViewModel())
