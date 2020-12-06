@@ -29,16 +29,16 @@ class VerProdsActivity : AppCompatActivity() {
         //val adapter = ItemAdapter(lista_items)
         //rvlista.adapter = adapter
 
-        var lista: ArrayList<Item> = ArrayList()
-        val mPrefs = getSharedPreferences(MODE_PRIVATE)
-        Gson gson = new Gson()
+        //var lista: ArrayList<Item> = ArrayList()
+        //val mPrefs = getPreferences(MODE_PRIVATE)
+        /*Gson gson = new Gson()
         val json = mPrefs.getString("Lista_items", "")
         if (gson.fromJson(json, lista::class.java) != null) {
             lista = gson.fromJson(json, lista::class.java)
-        }
-        Log.i("DEBUG", lista.get(0).get_marca())
-        rvlista.layoutManager = LinearLayoutManager(this)
-        Log.i("DEBUG", lista.get(0).get_marca())
+        }*/
+
+
+
         rvlista.layoutManager = LinearLayoutManager(this)
     }
 
@@ -48,10 +48,10 @@ class VerProdsActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val intentgo = Intent(this, NovoProdActivity::class.java)
-
-        this.startActivity()
-        val item = intent.extras?.getSerializable("item")
-
+        val intentToGO = Intent(this, NovoProdActivity::class.java)
+        this.startActivity(intentToGO)
+        val item : Item = intentToGO.extras?.getSerializable("item") as Item//crash
+        lista_items.add(item)
+        return true
     }
 }

@@ -17,8 +17,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 import pt.isec.a2017014841.tp.R
 import pt.isec.a2017014841.tp.data.classes.Item
 import pt.isec.a2017014841.tp.data.classes.Lista_items
-import pt.isec.a2017014841.tp.data.db.DB
-import pt.isec.a2017014841.tp.data.repositorios.ProdRepositorio
 import pt.isec.a2017014841.tp.other.ListaAdapter
 
 class MainActivity : AppCompatActivity() {
@@ -27,8 +25,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val b = Bundle()
-        intent.extras?
+        val edit = getSharedPreferences("list", 0).edit()
+
         this.setTitle("ListMaker")
         //val factory
         //val viewModel = ViewModelProvider(this, factory).get(ProdViewModel())
@@ -70,8 +68,6 @@ class MainActivity : AppCompatActivity() {
         }
         if (item.itemId == R.id.menu1VP) {
             val intentToGo = Intent(this, VerProdsActivity::class.java)
-            intentToGo.extras?.get()
-
             this.startActivity(intent)
             return true
         }

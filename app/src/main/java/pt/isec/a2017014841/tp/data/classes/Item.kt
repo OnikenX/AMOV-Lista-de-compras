@@ -6,7 +6,7 @@ import java.util.*
 
 
 
-class Item(private var nome:String, private var marca:String, private var categoria:String, private var validade:String, private var quantidade: String, private var bitmap: Bitmap) : Serializable {
+class Item(private var nome:String, private var marca:String, private var categoria:String, private var validade:String?, private var quantidade: String,private var preco: String, private var notas: String, private var bitmap: Bitmap?) : Serializable {
     fun get_marca():String
     {
         return marca
@@ -18,7 +18,7 @@ class Item(private var nome:String, private var marca:String, private var catego
     {
         return categoria
     }
-    fun get_val():String
+    fun get_val():String?
     {
         return validade
     }
@@ -29,6 +29,14 @@ class Item(private var nome:String, private var marca:String, private var catego
     fun get_nome():String
     {
         return nome
+    }
+    fun get_preco():String
+    {
+        return preco;
+    }
+    fun get_notas():String
+    {
+        return notas
     }
     fun set_marca(marca:String)
     {
@@ -50,7 +58,13 @@ class Item(private var nome:String, private var marca:String, private var catego
     {
         this.categoria=cat
     }
-
+    fun set_preco(preco:String)
+    {
+        this.preco=preco
+    }
+    fun set_notas(notas: String){
+        this.notas=notas
+    }
     override fun toString(): String {
         return "Item(nome='$nome', marca='$marca', categoria='$categoria', validade='$validade', quantidade='$quantidade', bitmap=$bitmap)"
     }

@@ -10,14 +10,16 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.show_listas.view.*
 import pt.isec.a2017014841.tp.R
 import pt.isec.a2017014841.tp.data.classes.Item
-import pt.isec.a2017014841.tp.data.classes.Lista_items
-import pt.isec.a2017014841.tp.data.db.entidades.Lista
+
 
 
 class ItemAdapter(private val listas: ArrayList<Item>): RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
     inner class ItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
     {
         val name = itemView.findViewById<TextView>(R.id.nome_item)
+        val quantidade = itemView.findViewById<TextView>(R.id.quantidade)
+        val marca = itemView.findViewById<TextView>(R.id.marca_item)
+        val preco = itemView.findViewById<TextView>(R.id.preco)
 
     }//representa cada um dos itens que vai ser visualizado dentro da RV
 
@@ -38,35 +40,10 @@ class ItemAdapter(private val listas: ArrayList<Item>): RecyclerView.Adapter<Ite
     }
 
     override fun onBindViewHolder(@NonNull viewHolder: ItemAdapter.ItemViewHolder, position: Int) {
+        viewHolder.name.text=listas.get(position).get_nome()
+        viewHolder.marca.text=listas.get(position).get_marca()
+        viewHolder.preco.text=listas.get(position).get_preco()
+        viewHolder.quantidade.text=listas.get(position).get_quant()
 
-        /* val nome= "hello"
-        //val contact: Contact = mContacts.get(position)
-        // Set item views based on your views and data model
-        val textView = viewHolder.nameTextView
-        textView.text = listas.get(position).get_nome()
-        val deletebutton = viewHolder.deleteButton
-        val copybutton=viewHolder.copyButton
-        val addbutton =viewHolder.addButton
-        deletebutton.setOnClickListener() {
-            listas.removeAt(position)
-            notifyDataSetChanged();
-        }
-        copybutton.setOnClickListener() {
-            if((listas.get(position).get_nome()+"-Copia").length<16)
-            {
-                var mylist: ArrayList<Item> = ArrayList()
-                listas.add(Lista_items(listas.get(position).get_nome()+"-Copia",mylist))
-            }
-
-            notifyDataSetChanged();
-        }*/
-
-        // button.isEnabled = false
-        // button.text = "dildo_baggins"
-        //button.isEnabled = contact.isOnline
-/*
-        viewHolder.itemView.apply{
-            rvtextView.text = listas[position].nome
-        }*/
     }
 }

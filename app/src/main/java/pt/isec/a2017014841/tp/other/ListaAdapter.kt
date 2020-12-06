@@ -1,7 +1,9 @@
 package pt.isec.a2017014841.tp.other
 
 import android.content.Context
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +12,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import pt.isec.a2017014841.tp.R
 import pt.isec.a2017014841.tp.UI.VerProdsActivity
 import pt.isec.a2017014841.tp.data.classes.Item
@@ -56,9 +59,9 @@ class ListaAdapter(private val listas: ArrayList<Lista_items>): RecyclerView.Ada
         textView.setOnClickListener()
         {
 
-            li          stas.get(0).get_items().add(Item("VASCO","OIOIOI","KSKSK",null,"aaaa"))
+            listas.get(0).get_items().add(Item("VASCO","OIOIOI","KSKSK",null,"aaaa","null","null",null))
             val mPrefs: SharedPreferences = viewHolder.context.getSharedPreferences("Lista_items",MODE_PRIVATE)
-            val prefsEditor: Editor = mPrefs.edit()
+            val prefsEditor: SharedPreferences.Editor = mPrefs.edit()
             val gson = Gson()
             val json = gson.toJson(listas)
             prefsEditor.putString("Listas_items", json)
