@@ -23,7 +23,7 @@ import pt.isec.a2017014841.tp.other.setPic
 import kotlin.math.min
 
 
-class NovoProdActivity : AppCompatActivity() {
+class NovoProdActivity : AppCompatActivitySaveFile() {
     var bitmap: Bitmap? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,11 +47,15 @@ class NovoProdActivity : AppCompatActivity() {
             val item = Item(
                 nomeprod.toString(),
                 marcaprod.toString(),
-                categoryprod.toString(), validprod.toString(), n_items.toString(), precoprod.toString(), notasprod.toString(),  bitmap!!
+                categoryprod.toString(),
+                validprod.toString(),
+                n_items.toString(),
+                precoprod.toString(),
+                notasprod.toString()
             )
-            val bundle = Bundle()
-            bundle.putSerializable("item", item)
-            intent.putExtras(bundle)
+            loadSave()
+            listas!![intent.extras!!.getInt("position")].get_items().add(item)
+            saveSave()
             finish()
         }
     }

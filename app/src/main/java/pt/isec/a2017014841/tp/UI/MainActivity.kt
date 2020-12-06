@@ -3,6 +3,7 @@ package pt.isec.a2017014841.tp.UI
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -19,26 +20,35 @@ import pt.isec.a2017014841.tp.data.classes.Item
 import pt.isec.a2017014841.tp.data.classes.Lista_items
 import pt.isec.a2017014841.tp.other.ListaAdapter
 
-class MainActivity : AppCompatActivity() {
-  private  var listas = ArrayList<Lista_items>()
+class MainActivity : AppCompatActivitySaveFile() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        loadSave()
         setContentView(R.layout.activity_main)
         val edit = getSharedPreferences("list", 0).edit()
         this.title = getString(R.string.ListMaker)
         //val factory
         //val viewModel = ViewModelProvider(this, factory).get(ProdViewModel())
-        val adapter = ListaAdapter(listas)
+        val adapter = ListaAdapter(listas!!, this)
         rvListas.adapter = adapter
         rvListas.layoutManager = LinearLayoutManager(this)
        // contacts = Contact.createContactsList(20)
     }
 
+    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+        super.onSaveInstanceState(outState, outPersistentState)
+        saveSave()
+    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu1, menu)
         return true
+    }
+
+    override fun onDestroy() {
+        saveSave()
+        super.onDestroy()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -54,7 +64,8 @@ class MainActivity : AppCompatActivity() {
                    if(editText.text.toString()!="")
                    {
                        var mylist: ArrayList<Item> = ArrayList()
-                       listas.add(Lista_items(editText.text.toString(), mylist))
+                       listas!!.add(Lista_items(editText.text.toString(), mylist))
+                       saveSave()
                    }
                 }
                 setNegativeButton(getString(R.string.cancel)){ dialog, which->

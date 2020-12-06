@@ -16,22 +16,28 @@ import pt.isec.a2017014841.tp.data.classes.Lista_items
 import pt.isec.a2017014841.tp.other.ItemAdapter
 
 
-
-class VerProdsActivity : AppCompatActivity() {
+class VerProdsActivity : AppCompatActivitySaveFile() {
     val GET_ITEM = 1
-    lateinit var lista_items :Lista_items
+    lateinit var lista_items: Lista_items
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.i("DEBUG", "MyClass.getView() — get item number")
         setContentView(R.layout.activity_ver_prods)
-        this.title = getString(R.string.Product)
-        if(savedInstanceState == null){
-            if (intent.extras != null) {
-                lista_items = intent.getSerializableExtra("ARRAYLIST") as Lista_items
+        //this.title = getString(R.string.Product)
+        if (intent.extras != null) {
+            try{
+                loadSave()
+                lista_items = this.listas!![intent.extras!!.getInt("position")]
+            }catch(e : Throwable){
+                e.printStackTrace()
+                listas = null
+                finish()
             }
-        }else{
-            lista_items = intent.getSerializableExtra("ARRAYLIST") as Lista_items
+
         }
+
+
+        this.title = lista_items.get_nome()
         val rvlista = findViewById<View>(R.id.rvItems) as RecyclerView
         val adapter = ItemAdapter(lista_items.get_items())
         rvlista.adapter = adapter
@@ -43,38 +49,31 @@ class VerProdsActivity : AppCompatActivity() {
         if (gson.fromJson(json, lista::class.java) != null) {
             lista = gson.fromJson(json, lista::class.java)
         }*/
-
-
         rvlista.layoutManager = LinearLayoutManager(this)
     }
 
-    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
-        super.onSaveInstanceState(outState, outPersistentState)
-        outState.putSerializable("lista_items", lista_items)
-    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu3, menu)
         return true
     }
 
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val intentToGO = Intent(this, NovoProdActivity::class.java)
         val b = Bundle()
-        b.putSerializable("ARRAYLIST", lista_items)
-        intent.putExtras(b)
+        b.putInt("position", intent.extras!!.getInt("position"))
+        intentToGO.putExtras(b)
         this.startActivityForResult(intentToGO, GET_ITEM)
         return true
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(resultCode != RESULT_CANCELED){
-            if(requestCode == 1){
-                if(resultCode == RESULT_OK && data!=null){
-                    val item = data.extras!!["item"] as Item
-                    lista_items.get_items().add(item)
-                }
+        if (resultCode != RESULT_CANCELED) {
+            if (requestCode == 1) {
+                loadSave()
+                lista_items = this.listas!![intent.extras!!.getInt("position")]
             }
         }
     }

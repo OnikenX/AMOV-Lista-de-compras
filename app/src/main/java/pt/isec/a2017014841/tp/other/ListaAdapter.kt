@@ -14,6 +14,8 @@ import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import pt.isec.a2017014841.tp.R
+import pt.isec.a2017014841.tp.UI.AppCompatActivitySaveFile
+import pt.isec.a2017014841.tp.UI.NovoProdActivity
 import pt.isec.a2017014841.tp.UI.VerProdsActivity
 import pt.isec.a2017014841.tp.data.classes.Item
 import pt.isec.a2017014841.tp.data.classes.Lista_items
@@ -22,7 +24,10 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class ListaAdapter(private val listas: ArrayList<Lista_items>) :
+class ListaAdapter(
+    private val listas: ArrayList<Lista_items>,
+    private val activity: AppCompatActivitySaveFile
+) :
     RecyclerView.Adapter<ListaAdapter.ListaViewHolder>() {
     inner class ListaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var context: Context? = itemView.context
@@ -68,41 +73,44 @@ class ListaAdapter(private val listas: ArrayList<Lista_items>) :
         val addbutton = viewHolder.addButton
         textView.setOnClickListener()
         {
-
-//            listas[0].add(Item("VASCO","OIOIOI","KSKSK",null,"aaaa","null","null",null))
-//            val mPrefs: SharedPreferences = viewHolder.context!!.getSharedPreferences("Lista_items",MODE_PRIVATE)
-//            val prefsEditor: SharedPreferences.Editor = mPrefs.edit()
-//            val gson = Gson()
-//            val json = gson.toJson(listas)
-//            prefsEditor.putString("Listas_items", json)
-//            prefsEditor.apply()
-
-            val intent = Intent(viewHolder.context!!.applicationContext, VerProdsActivity::class.java)
+            val intent =
+                Intent(viewHolder.context!!.applicationContext, VerProdsActivity::class.java)
             val b = Bundle()
-            b.putSerializable("ARRAYLIST", listas[position])
+            b.putInt("position", position)
             intent.putExtras(b)
             viewHolder.context!!.startActivity(intent)
-
         }
         deletebutton!!.setOnClickListener() {
+
+            listas[position].get_items().forEach {
+                activity.openFileInput()
+            }
+
             listas.removeAt(position)
-            notifyDataSetChanged();
+            activity.saveSave()
+            notifyDataSetChanged()
         }
         copybutton!!.setOnClickListener() {
             if ((listas[position].get_nome() + "-Copia").length < 16) {
                 var mylist: ArrayList<Item> = ArrayList()
-                listas.add(Lista_items( listas.get(position).get_nome() + "-Copia", listas.get(position).get_items()))
+                listas.add(
+                    Lista_items(
+                        listas.get(position).get_nome() + "-Copia",
+                        listas.get(position).get_items()
+                    )
+                )
+                activity.saveSave()
             }
 
+            addbutton!!.setOnClickListener() {
+                val intent = Intent(viewHolder.context, NovoProdActivity::class.java)
+                val b = Bundle()
+                b.putInt("position", position)
+                intent.putExtras(b)
+                viewHolder.context!!.startActivity(intent)
+            }
+            activity.saveSave()
             notifyDataSetChanged();
         }
-
-        // button.isEnabled = false
-        // button.text = "dildo_baggins"
-        //button.isEnabled = contact.isOnline
-/*
-        viewHolder.itemView.apply{
-            rvtextView.text = listas[position].nome
-        }*/
     }
 }
