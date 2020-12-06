@@ -81,11 +81,6 @@ class ListaAdapter(
             viewHolder.context!!.startActivity(intent)
         }
         deletebutton!!.setOnClickListener() {
-
-            listas[position].get_items().forEach {
-                activity.openFileInput()
-            }
-
             listas.removeAt(position)
             activity.saveSave()
             notifyDataSetChanged()
