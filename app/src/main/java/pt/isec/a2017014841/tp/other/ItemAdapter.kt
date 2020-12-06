@@ -29,9 +29,6 @@ class ItemAdapter(private val listas: ArrayList<Item>): RecyclerView.Adapter<Ite
         val inflater = LayoutInflater.from(context)
         // Inflate the custom layout
         val view_lista = inflater.inflate(R.layout.items_ver, parent, false)
-
-
-
         return ItemViewHolder(view_lista)
     }
 
