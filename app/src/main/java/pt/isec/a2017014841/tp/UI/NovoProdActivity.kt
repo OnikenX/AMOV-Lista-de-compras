@@ -90,8 +90,6 @@ class NovoProdActivity : AppCompatActivity() {
             }
         }
         builder.show()
-
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
