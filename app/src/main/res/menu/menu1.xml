@@ -3,13 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/menu1NL"
-        android:title="Nova Lista"
+        android:title="@string/new_lista"
         app:showAsAction="never"/>
-
-    <item android:id="@+id/menu1VP"
-        android:title="Ver Produtos"
-        app:showAsAction="never"/>
-
-
 
 </menu>

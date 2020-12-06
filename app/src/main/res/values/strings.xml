@@ -28,4 +28,5 @@
     <string name="select_list_name">Type the list name</string>
     <string name="ok">OK</string>
     <string name="products">Produtos</string>
+    <string name="new_lista">New List</string>
 </resources>

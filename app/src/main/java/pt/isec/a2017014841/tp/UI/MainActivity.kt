@@ -66,11 +66,7 @@ class MainActivity : AppCompatActivity() {
                 show()
             }
         }
-        if (item.itemId == R.id.menu1VP) {
-            val intentToGo = Intent(this, VerProdsActivity::class.java)
-            this.startActivity(intent)
-            return true
-        }
+
         return super.onOptionsItemSelected(item)
     }
 }
