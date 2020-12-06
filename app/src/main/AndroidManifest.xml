@@ -11,9 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UI.AdicionaProdActivity" />
         <activity android:name=".UI.VerProdsActivity" />
-        <activity android:name=".UI.VerListaActivity" />
         <activity android:name=".UI.NovoProdActivity" />
         <activity android:name=".UI.MainActivity">
             <intent-filter>
