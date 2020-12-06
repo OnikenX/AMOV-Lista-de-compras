@@ -19,6 +19,7 @@ import pt.isec.a2017014841.tp.R
 import pt.isec.a2017014841.tp.data.classes.Item
 import pt.isec.a2017014841.tp.other.askForPermission
 import pt.isec.a2017014841.tp.other.hasReadPermission
+import pt.isec.a2017014841.tp.other.setPic
 import kotlin.math.min
 
 
@@ -31,7 +32,6 @@ class NovoProdActivity : AppCompatActivity() {
             if (savedInstanceState != null)
                 bitmap = savedInstanceState.getParcelable("photo")
             else {
-                Toast.makeText(this, "estava null lol", Toast.LENGTH_SHORT).show();
                 val conf = Bitmap.Config.ARGB_8888 // see other conf types
                 bitmap = Bitmap.createBitmap(20, 20, conf) // this creates a MUTABLE bitmap
             }
@@ -46,12 +46,11 @@ class NovoProdActivity : AppCompatActivity() {
             val item = Item(
                 nomeprod.toString(),
                 marcaprod.toString(),
-                categoryprod.toString(), validprod.toString(), n_items.toString(), bitmap!!
+                categoryprod.toString(), validprod.toString(), n_items.toString(), precoprod.toString(), notasprod.toString(),  bitmap!!
             )
             val intent = Intent(applicationContext, VerProdsActivity::class.java)
             val bundle = Bundle()
             bundle.putSerializable("item", item)
-            bundle.getSerializable
             intent.putExtras(bundle)
             finish()
         }
@@ -104,6 +103,7 @@ class NovoProdActivity : AppCompatActivity() {
                     val selectedImage = data.extras!!["data"] as Bitmap?
                     bitmap = selectedImage
                     photo.setImageBitmap(bitmap)
+
                 }
                 //get from gallery
                 1 -> if (resultCode == RESULT_OK && data != null) {
@@ -125,27 +125,6 @@ class NovoProdActivity : AppCompatActivity() {
                     }
                 }
             }
-        }
-    }
-
-    fun setPic(view: View, path: String) {
-        val targetW = view.width
-        val targetH = view.height
-        if (targetH < 1 || targetW < 1)
-            return
-        val bmpOptions = BitmapFactory.Options()
-        bmpOptions.inJustDecodeBounds = true
-        BitmapFactory.decodeFile(path, bmpOptions)
-        val photoW = bmpOptions.outWidth
-        val photoH = bmpOptions.outHeight
-        val scale = min(photoW / targetW, photoH / targetH)
-        bmpOptions.inSampleSize = scale
-        bmpOptions.inJustDecodeBounds = false
-        bitmap = BitmapFactory.decodeFile(path, bmpOptions)
-        when {
-            view is ImageView -> (view as ImageView).setImageBitmap(bitmap)
-            //else -> view.background = bitmap.toDrawable(view.resources)
-            else -> view.background = BitmapDrawable(view.resources, bitmap)
         }
     }
 
