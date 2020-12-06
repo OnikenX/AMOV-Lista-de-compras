@@ -3,6 +3,7 @@ package pt.isec.a2017014841.tp.data.classes
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import java.io.Serializable
 import java.sql.Timestamp
@@ -28,7 +29,9 @@ class Item(
     private var quantidade: String
     private var preco: String
     private var notas: String
-//private var bitmap  = bitmap
+    private var timeStamp: String
+
+    //private var bitmap  = bitmap
     init {
         this.nome = nome ?: " "
         this.marca = marca ?: " "
@@ -37,10 +40,10 @@ class Item(
         this.quantidade = quantidade ?: " "
         this.preco = preco ?: " "
         this.notas = notas ?: " "
+        this.timeStamp = java.text.SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+        Log.i("TAG",this.toString() )
     }
 
-    @SuppressLint("SimpleDateFormat")
-    private val timeStamp: String = java.text.SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
 
     fun get_timeStamp(): String {
         return timeStamp

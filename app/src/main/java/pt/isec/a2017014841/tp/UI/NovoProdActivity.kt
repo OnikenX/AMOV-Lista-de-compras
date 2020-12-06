@@ -45,13 +45,13 @@ class NovoProdActivity : AppCompatActivitySaveFile() {
 
         adicionaprod.setOnClickListener() {
             val item = Item(
-                nomeprod.toString(),
-                marcaprod.toString(),
-                categoryprod.toString(),
-                validprod.toString(),
-                n_items.toString(),
-                precoprod.toString(),
-                notasprod.toString()
+                nomeprod.text.toString(),
+                marcaprod.text.toString(),
+                categoryprod.text.toString(),
+                validprod.text.toString(),
+                n_items.text.toString(),
+                precoprod.text.toString(),
+                notasprod.text.toString()
             )
             loadSave()
             listas!![intent.extras!!.getInt("position")].get_items().add(item)
