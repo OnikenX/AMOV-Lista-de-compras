@@ -15,7 +15,10 @@ import pt.isec.a2017014841.tp.data.classes.Item
 import pt.isec.a2017014841.tp.data.classes.Lista_items
 import pt.isec.a2017014841.tp.other.ItemAdapter
 
+
+
 class VerProdsActivity : AppCompatActivity() {
+    val GET_ITEM = 1
     lateinit var lista_items :Lista_items
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,7 +63,19 @@ class VerProdsActivity : AppCompatActivity() {
         val b = Bundle()
         b.putSerializable("ARRAYLIST", lista_items)
         intent.putExtras(b)
-        this.startActivity(intentToGO)
+        this.startActivityForResult(intentToGO, GET_ITEM)
         return true
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode != RESULT_CANCELED){
+            if(requestCode == 1){
+                if(resultCode == RESULT_OK && data!=null){
+                    val item = data.extras!!["item"] as Item
+                    lista_items.get_items().add(item)
+                }
+            }
+        }
     }
 }
