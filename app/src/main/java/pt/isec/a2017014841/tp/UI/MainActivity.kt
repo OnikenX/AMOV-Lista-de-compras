@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val edit = getSharedPreferences("list", 0).edit()
 
-        this.setTitle("ListMaker")
+        this.title = getString(R.string.ListMaker)
         //val factory
         //val viewModel = ViewModelProvider(this, factory).get(ProdViewModel())
         val adapter = ListaAdapter(listas)
@@ -50,15 +50,15 @@ class MainActivity : AppCompatActivity() {
             val editText = dialogLayout.findViewById<EditText>(R.id.nomelista)
 
             with(builder) {
-                setTitle("Indique o nome da lista")
-                setPositiveButton("OK") { dialogInterface: DialogInterface, i: Int ->
+                setTitle(getString(R.string.select_list_name))
+                setPositiveButton(getString(R.string.ok)) { dialogInterface: DialogInterface, i: Int ->
                    if(editText.text.toString()!="")
                    {
                        var mylist: ArrayList<Item> = ArrayList()
                        listas.add(Lista_items(editText.text.toString(), mylist))
                    }
                 }
-                setNegativeButton("Cancelar"){ dialog, which->
+                setNegativeButton(getString(R.string.cancel)){ dialog, which->
                     Log.d("Main", "Negative button clicked")
                 }
                 setView(dialogLayout)

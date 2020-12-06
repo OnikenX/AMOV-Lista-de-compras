@@ -9,7 +9,7 @@ class AdicionaProdActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adiciona_prod)
 
-        this.setTitle("Produtos")
+        this.setTitle(getString(R.string.products))
     }
 
 }

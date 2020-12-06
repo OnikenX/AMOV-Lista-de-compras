@@ -21,7 +21,7 @@ class VerProdsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         Log.i("DEBUG", "MyClass.getView() — get item number")
         setContentView(R.layout.activity_ver_prods)
-        this.setTitle("Produtos")
+        this.title = getString(R.string.Product)
         if(savedInstanceState == null){
             if (intent.extras != null) {
                 lista_items = intent.getSerializableExtra("ARRAYLIST") as Lista_items

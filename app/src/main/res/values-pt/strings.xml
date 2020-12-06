@@ -23,4 +23,10 @@
     <string name="how_to_photo">Como quer escolher a foto?</string>
     <string name="item_photo">Foto do item</string>
     <string name="cant_access_gallery">Sem acesso à galleria.</string>
+    <string name="ListMaker">Criador de Lista</string>
+    <string name="category">categoria</string>
+    <string name="Product">Produto</string>
+    <string name="select_list_name">Indique o nome da lista</string>
+    <string name="ok">OK</string>
+    <string name="products">Produtos</string>
 </resources>
