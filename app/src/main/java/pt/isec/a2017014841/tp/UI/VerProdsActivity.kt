@@ -33,7 +33,6 @@ class VerProdsActivity : AppCompatActivitySaveFile() {
                 listas = null
                 finish()
             }
-
         }
 
 
@@ -52,12 +51,10 @@ class VerProdsActivity : AppCompatActivitySaveFile() {
         rvlista.layoutManager = LinearLayoutManager(this)
     }
 
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu3, menu)
         return true
     }
-
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val intentToGO = Intent(this, NovoProdActivity::class.java)
